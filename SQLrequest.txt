@@ -1,0 +1,14 @@
+SELECT
+    relatives.familyName,
+    relatives.givenName,
+    relatives.middleName,
+    relatives.birthDate,
+    dependants.contactRelationship
+FROM
+    HPPersonGeneric employee
+JOIN
+    HPPersonDependant dependants ON employee.sysId = dependants.HPPersonGenericSysId
+JOIN
+    HPPersonGeneric relatives ON dependants.HPRelatedPersonSysId = relatives.sysId
+WHERE
+    employee.personId = 'test';
